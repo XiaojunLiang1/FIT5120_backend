@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
-import java.util.Objects;
 
+/**
+ * Handles incoming HTTP requests for weather data
+ */
 @RestController
 @RequestMapping("/api/weather")
 public class WeatherClientController {
@@ -19,8 +21,19 @@ public class WeatherClientController {
         this.weatherClientService = weatherClientService;
     }
 
+    /**
+     * Provides an endpoint to retrieve current weather information based on latitude and longitude.
+     */
     @GetMapping
-    public Map<String, Object> getWeather(@RequestParam String lat, @RequestParam String lon) {
-        return weatherClientService.getWeather(lat,lon);
+    public Map<String, Object> getTempByCoordinates(@RequestParam String lat, @RequestParam String lon) {
+        return weatherClientService.getTempByCoordinates(lat,lon);
+    }
+
+    /**
+     * Provides an endpoint to retrieve current weather information based on postcode.
+     */
+    @GetMapping("/postcode")
+    public Map<String, Object> getTempByPostcode(@RequestParam String postcode) {
+        return weatherClientService.getTempByPostcode(postcode);
     }
 }
