@@ -39,6 +39,8 @@ public class WeatherClientService {
             Map main = (Map) response.get("main");
             result.put("temp", main.get("temp"));
             result.put("feels_like", main.get("feels_like"));
+            String location = String.valueOf(response.get("name"));
+            result.put("location", location);
             return result;
         } catch (Exception e) {
             result.put("error", "Failed to retrieve weather data");
@@ -63,9 +65,7 @@ public class WeatherClientService {
             System.out.println(response);
             String lat = String.valueOf(response.get("lat"));
             String lon = String.valueOf(response.get("lon"));
-            String location = String.valueOf(response.get("name"));
             result = getTempByCoordinates(lat, lon);
-            result.put("location", location);
             return result;
         } catch (Exception e) {
             result.put("error", "Invalid postcode");
