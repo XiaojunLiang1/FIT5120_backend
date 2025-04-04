@@ -14,3 +14,7 @@ spring:
 openweather:
   api:
     key: "7e92d17bb808d7d6c90e22c8a3380f66"
+
+geoapify:
+  api:
+    key: "45235809726b43c8ad507cd53e1a0a64"
