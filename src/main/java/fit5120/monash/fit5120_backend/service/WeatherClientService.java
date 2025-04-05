@@ -1,12 +1,15 @@
 package fit5120.monash.fit5120_backend.service;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.apache.tomcat.util.json.JSONFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,6 +72,41 @@ public class WeatherClientService {
             return result;
         } catch (Exception e) {
             result.put("error", "Invalid postcode");
+            return result;
+        }
+    }
+
+    /**
+     * Retrieves the forecasted weather data of given number of days for a given latitude and longitude.
+     *
+     * @param lat The latitude of the location.
+     * @param lon The longitude of the location.
+     * @param cnt The number of days to forecast.
+     * @return A list of maps containing forecasted weather data, including temperature and date.
+     *         or an error if cannot retrieve data for invalid location.
+     */
+    public List<Map<String, Object>> getForecastTempByCoordinates(double lat, double lon, int cnt) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            String url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt="+cnt+"&appid="+apiKey+"&units=metric";
+            Map response = restTemplate.getForObject(url, Map.class);
+            List<Map<String, Object>> responseList = (List<Map<String, Object>>) response.get("list");
+            for (Map<String, Object> res : responseList) {
+                int dt = (int)res.get("dt");
+                LocalDate date = Instant.ofEpochSecond(dt).atZone(ZoneId.of("Australia/Melbourne")).toLocalDate();
+                Map<String, Object> temp = (Map<String, Object>) res.get("temp");
+                String temperature = String.valueOf(temp.get("day"));
+                Map<String,Object> forcast = new HashMap<>();
+                forcast.put("date", date);
+                forcast.put("temperature", temperature);
+                result.add(forcast);
+            }
+            return result;
+        } catch (Exception e) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("Failed to get forcast info: " + e.getMessage(), null);
+            result.add(error);
             return result;
         }
     }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,5 +36,13 @@ public class WeatherClientController {
     @GetMapping("/postcode")
     public Map<String, Object> getTempByPostcode(@RequestParam String postcode) {
         return weatherClientService.getTempByPostcode(postcode);
+    }
+
+    /**
+     * Provides an endpoint to retrieve the weather forecast information based on latitude, longitude, and the number of days.
+     */
+    @GetMapping("/forecast")
+    public List<Map<String, Object>> getForecastTempByCoordinates(@RequestParam double lat, @RequestParam double lon, @RequestParam int cnt) {
+        return weatherClientService.getForecastTempByCoordinates(lat, lon, cnt);
     }
 }
