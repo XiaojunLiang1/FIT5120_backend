@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: 13.239.234.123
+    url: jdbc:mysql://13.239.234.123:3306/demo
     username: user
     password: usertp19
     driver-class-name: com.mysql.cj.jdbc.Driver
