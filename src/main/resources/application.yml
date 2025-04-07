@@ -5,6 +5,11 @@ spring:
     password: usertp19
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+#  security:
+#    user:
+#      name: user
+#      password: usertp19
+
   jpa:
     hibernate:
       ddl-auto: update

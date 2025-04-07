@@ -30,13 +30,19 @@ public class LocationClientService {
             String url = "https://api.geoapify.com/v1/geocode/autocomplete?text=" + input + ",AU&apiKey=" + apiKey;
             Map response = restTemplate.getForObject(url, Map.class);
             List<Map<String, Object>> responseList = (List<Map<String, Object>>) response.get("features");
-            Map<String,Object> addresses = new HashMap<>();
+            if (responseList == null || responseList.isEmpty()) {
+                Map<String, Object> message = new HashMap<>();
+                message.put("message", "Input too short or no matching address found");
+                result.add(message);
+                return result;
+            }
             for(Map<String,Object> res : responseList) {
+                Map<String,Object> addresses = new HashMap<>();
                 Map<String,Object> properties = (Map<String, Object>) res.get("properties");
                 Map<String,Object> geometry = (Map<String, Object>) res.get("geometry");
                 List<Double> coordinates = (List<Double>)geometry.get("coordinates");
-                String lat = coordinates.get(0).toString();
-                String lon = coordinates.get(1).toString();
+                String lat = coordinates.get(1).toString();
+                String lon = coordinates.get(0).toString();
                 addresses.put("address", properties.get("formatted").toString());
                 addresses.put("lat", lat);
                 addresses.put("lon", lon);

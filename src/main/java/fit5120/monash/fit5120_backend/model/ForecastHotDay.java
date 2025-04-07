@@ -22,8 +22,16 @@ public class ForecastHotDay {
     @Column(name = "predicted_hot_days")
     private int PredictedVeryHotDays;
 
-    public int getId() { return id; }
-    public String getCity() { return city; }
-    public int getYear() { return year; }
-    public int getPredictedHotDays() { return predictedHotDays; }
+    public int getId() {
+        return id;
+    }
+    public String getCity() {
+        return city;
+    }
+    public int getYear() {
+        return year;
+    }
+    public int getPredictedHotDays() {
+        return predictedHotDays;
+    }
 }
