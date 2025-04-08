@@ -4,34 +4,83 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.Getter;
+
+/**
+ * This class represents a row in the forecast_extreme_hot_days table in the database.
+ * It contains the id, state, seasonYear, veryHotDays, hotDays, predictedStartDate and predictedEndDate of the row.
+ */
 
 @Entity
 @Table(name = "forecast_extreme_hot_days")
 public class ForecastHotDay {
 
     @Id
-    public int id;
-    @Column(name = "city")
-    private String city;
-    @Column(name = "year")
-    private int year;
-    @Column(name = "predicted_very_hot_days")
-    private int predictedHotDays;
-    @Column(name = "predicted_hot_days")
-    private int PredictedVeryHotDays;
+    private Integer id;
 
-    public int getId() {
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "season_year")
+    private Integer seasonYear;
+
+    private String ds;
+
+    @Column(name = "very_hot_days")
+    private Integer veryHotDays;
+
+    @Column(name = "hot_days")
+    private Integer hotDays;
+
+    @Column(name = "season_start_day")
+    private Integer seasonStartDate;
+
+    @Column(name = "season_end_day")
+    private Integer seasonEndDate;
+
+    @Column(name = "predicted_start_date")
+    private String predictedStartDate;
+
+    @Column(name = "predicted_end_date")
+    private String predictedEndDate;
+
+    //getter
+    public Integer getId() {
         return id;
     }
-    public String getCity() {
-        return city;
+
+    public String getState() {
+        return state;
     }
-    public int getYear() {
-        return year;
+
+    public Integer getSeasonYear() {
+        return seasonYear;
     }
-    public int getPredictedHotDays() {
-        return predictedHotDays;
+
+    public String getDs() {
+        return ds;
+    }
+
+    public Integer getVeryHotDays() {
+        return veryHotDays;
+    }
+
+    public Integer getHotDays() {
+        return hotDays;
+    }
+
+    public Integer getSeasonStartDate() {
+        return seasonStartDate;
+    }
+
+    public Integer getSeasonEndDate() {
+        return seasonEndDate;
+    }
+
+    public String getPredictedStartDay() {
+        return predictedStartDate;
+    }
+
+    public String getPredictedEndDay() {
+        return predictedEndDate;
     }
 }

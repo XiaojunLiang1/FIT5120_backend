@@ -1,5 +1,6 @@
 package fit5120.monash.fit5120_backend.controller;
 
+import fit5120.monash.fit5120_backend.dto.HeatMapDto;
 import fit5120.monash.fit5120_backend.model.ForecastHotDay;
 import fit5120.monash.fit5120_backend.service.ForecastHotDayService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Handles incoming HTTP requests for heat map data.
+ */
 @RestController
-@RequestMapping("/api/forecastHotDay")
+@RequestMapping("/api/heatmap")
 public class ForecastHotDayController {
 
     @Autowired
@@ -22,13 +26,12 @@ public class ForecastHotDayController {
         return forecastHotDayService.findAll();
     }
 
-    @GetMapping("/city")
-    public List<ForecastHotDay> getForecastHotDayByCity(@RequestParam String city) {
-        return forecastHotDayService.findByCity(city);
-    }
-
+    /**
+     * Provides an endpoint to retrieve the forecast hot days data for heatmap
+     * based on the given year.
+     */
     @GetMapping("/year")
-    public List<ForecastHotDay> getForecastHotDayByYear(@RequestParam int year) {
+    public List<HeatMapDto> getForecastHotDayByYear(@RequestParam int year) {
         return forecastHotDayService.findByYear(year);
     }
 }

@@ -8,7 +8,7 @@ spring:
 #  security:
 #    user:
 #      name: user
-#      password: usertp19
+#      password: Tt=12345
 
   jpa:
     hibernate:
