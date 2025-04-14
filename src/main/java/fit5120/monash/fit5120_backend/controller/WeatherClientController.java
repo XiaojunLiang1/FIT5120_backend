@@ -33,7 +33,7 @@ public class WeatherClientController {
     /**
      * Provides an endpoint to retrieve current weather information based on postcode.
      */
-    @GetMapping("/postcode")
+    @GetMapping("/postalcode")
     public Map<String, Object> getTempByPostcode(@RequestParam String postcode) {
         return weatherClientService.getTempByPostcode(postcode);
     }
