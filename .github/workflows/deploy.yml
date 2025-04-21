@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - iteration1
+      - iteration2
 
 jobs:
   build-and-deploy:
