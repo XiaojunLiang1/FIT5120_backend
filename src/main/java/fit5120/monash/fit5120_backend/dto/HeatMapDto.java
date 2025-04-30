@@ -41,7 +41,7 @@ public class HeatMapDto {
         return seasonStartDate;
     }
 
-    public String getPredictedEndDate() {
+    public String getSeasonEndDate() {
         return seasonEndDate;
     }
 }
