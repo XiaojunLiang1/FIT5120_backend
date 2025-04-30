@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
  */
 
 @Entity
-@Table(name = "forecast_extreme_hot_days")
+@Table(name = "historical_extreme_hot_days")
 public class ForecastHotDay {
 
     @Id
@@ -37,11 +37,6 @@ public class ForecastHotDay {
     @Column(name = "season_end_day")
     private Integer seasonEndDate;
 
-    @Column(name = "predicted_start_date")
-    private String predictedStartDate;
-
-    @Column(name = "predicted_end_date")
-    private String predictedEndDate;
 
     //getter
     public Integer getId() {
@@ -74,13 +69,5 @@ public class ForecastHotDay {
 
     public Integer getSeasonEndDate() {
         return seasonEndDate;
-    }
-
-    public String getPredictedStartDay() {
-        return predictedStartDate;
-    }
-
-    public String getPredictedEndDay() {
-        return predictedEndDate;
     }
 }
