@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Repository
 public interface ForecastHotDayRepository extends JpaRepository<ForecastHotDay, Integer> {
-    @Query("SELECT new fit5120.monash.fit5120_backend.dto.HeatMapDto(state, seasonYear, veryHotDays, hotDays, predictedStartDate, predictedEndDate) " +
+    @Query("SELECT new fit5120.monash.fit5120_backend.dto.HeatMapDto(state, seasonYear, veryHotDays, hotDays, seasonStartDate, seasonStartDate) " +
             "FROM ForecastHotDay WHERE seasonYear = :seasonYear")
     List<HeatMapDto> findByYear(@Param("seasonYear")int year);
 }

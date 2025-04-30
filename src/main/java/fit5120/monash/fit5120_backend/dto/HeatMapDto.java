@@ -9,16 +9,16 @@ public class HeatMapDto {
     private Integer seasonYear;
     private Integer veryHotDays;
     private Integer hotDays;
-    private String predictedStartDate;
-    private String predictedEndDate;
+    private String seasonStartDate;
+    private String seasonEndDate;
 
-    public HeatMapDto(String state, Integer seasonYear, Integer veryHotDays, Integer hotDays, String predictedStartDate, String predictedEndDate) {
+    public HeatMapDto(String state, Integer seasonYear, Integer veryHotDays, Integer hotDays, String seasonStartDate, String seasonEndDate) {
         this.state = state;
         this.seasonYear = seasonYear;
         this.veryHotDays = veryHotDays;
         this.hotDays = hotDays;
-        this.predictedStartDate = predictedStartDate;
-        this.predictedEndDate = predictedEndDate;
+        this.seasonStartDate = seasonStartDate;
+        this.seasonEndDate = seasonEndDate;
     }
 
     public String getState() {
@@ -37,11 +37,11 @@ public class HeatMapDto {
         return hotDays;
     }
 
-    public String getPredictedStartDate() {
-        return predictedStartDate;
+    public String getSeasonStartDate() {
+        return seasonStartDate;
     }
 
     public String getPredictedEndDate() {
-        return predictedEndDate;
+        return seasonEndDate;
     }
 }

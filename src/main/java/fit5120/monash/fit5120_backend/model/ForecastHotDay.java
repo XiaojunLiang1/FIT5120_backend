@@ -31,11 +31,11 @@ public class ForecastHotDay {
     @Column(name = "hot_days")
     private Integer hotDays;
 
-    @Column(name = "season_start_day")
-    private Integer seasonStartDate;
+    @Column(name = "season_start_date")
+    private String seasonStartDate;
 
-    @Column(name = "season_end_day")
-    private Integer seasonEndDate;
+    @Column(name = "season_end_date")
+    private String seasonEndDate;
 
 
     //getter
@@ -63,11 +63,11 @@ public class ForecastHotDay {
         return hotDays;
     }
 
-    public Integer getSeasonStartDate() {
+    public String getSeasonStartDate() {
         return seasonStartDate;
     }
 
-    public Integer getSeasonEndDate() {
+    public String getSeasonEndDate() {
         return seasonEndDate;
     }
 }
