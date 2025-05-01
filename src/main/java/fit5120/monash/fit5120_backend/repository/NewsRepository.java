@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/**
+ * the news repository that extends the JPA repository
+ */
 public interface NewsRepository extends JpaRepository<News, Integer> {
     List<News> findAllByOrderByPublishedAtDesc();
 }

@@ -16,11 +16,16 @@ public class ImageService {
 
     private static final String API_KEY = "9YguYs0AUgwqjIIqynBqmexPVIK3Dcua291n4Bjr9518sK1WetDli7IV";
 
+    /**
+     * this method is used to get image url from pexels api
+     * @param keyword
+     * @return
+     */
     public static String getImageUrlFromPexelsApi(String keyword) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.pexels.com/v1/search?query=" + URLEncoder.encode(keyword, StandardCharsets.UTF_8) + "&per_page=1"))
+                    .uri(URI.create("https://api.pexels.com/v1/search?query=" + URLEncoder.encode(keyword, StandardCharsets.UTF_8) + "&per_page=1&size=small&orientation=landscape"))
                     .header("Authorization", API_KEY)
                     .build();
 

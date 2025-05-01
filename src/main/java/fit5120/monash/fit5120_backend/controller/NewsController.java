@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Handles incoming HTTP requests for news data
+ */
 @RestController
 @RequestMapping("/api/news")
 public class NewsController {
@@ -18,6 +21,10 @@ public class NewsController {
         this.newsService = newsService;
     }
 
+    /**
+     * returns all news sorted by published date
+     * @return
+     */
     @GetMapping
     public List<News> getAllNewsSorted() {
         return newsService.getAllNews();
