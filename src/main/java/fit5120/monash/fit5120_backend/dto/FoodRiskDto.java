@@ -6,22 +6,28 @@ package fit5120.monash.fit5120_backend.dto;
 public class FoodRiskDto {
     private String name;
     private String riskLevel;
-    private String message;
     private String imageUrl;
+    private String riskAssessment;
+    private String foodQualityImpact;
+    private String healthConsideration;
+    private String storageRecommendation;
 
     /**
      * food response object, containing name, risk level, message and image url.
      * @param name
      * @param riskLevel
-     * @param message
      * @param imageUrl
      */
-    public FoodRiskDto(String name, String riskLevel, String message, String imageUrl) {
+    public FoodRiskDto(String name, String riskLevel, String riskAssessment, String foodQualityImpact, String healthConsideration, String storageRecommendation, String imageUrl) {
         this.name = name;
         this.riskLevel = riskLevel;
-        this.message = message;
+        this.riskAssessment = riskAssessment;
+        this.foodQualityImpact = foodQualityImpact;
+        this.healthConsideration = healthConsideration;
+        this.storageRecommendation = storageRecommendation;
         this.imageUrl = imageUrl;
     }
+
 
     public String getName() {
         return name;
@@ -31,11 +37,23 @@ public class FoodRiskDto {
         return riskLevel;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getRiskAssessment() {
+        return riskAssessment;
+    }
+
+    public String getFoodQualityImpact() {
+        return foodQualityImpact;
+    }
+
+    public String getHealthConsideration() {
+        return healthConsideration;
+    }
+
+    public String getStorageRecommendation() {
+        return storageRecommendation;
     }
 }
