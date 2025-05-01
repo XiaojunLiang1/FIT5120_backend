@@ -25,7 +25,7 @@ public class ImageService {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.pexels.com/v1/search?query=" + URLEncoder.encode(keyword, StandardCharsets.UTF_8) + "&per_page=1&size=small"))
+                    .uri(URI.create("https://api.pexels.com/v1/search?query=" + URLEncoder.encode(keyword, StandardCharsets.UTF_8) + "&per_page=1&size=small&orientation=landscape"))
                     .header("Authorization", API_KEY)
                     .build();
 
