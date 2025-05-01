@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "food_items")
+@Table(name = "food_item")
 public class FoodItem {
     @Id
     private Integer id;
@@ -17,17 +17,11 @@ public class FoodItem {
     @Column(name = "category")
     private String category;
 
-    @Column(name = "room_temperature_days")
-    private Integer roomTemperatureDays;
+    @Column(name = "base_temperature")
+    private Double baseTemperature;
 
-    @Column(name = "room_temperature_temperature")
-    private Integer roomTemperatureTemperature;
-
-    @Column(name = "room_temperature_tips")
-    private String roomTemperatureTips;
-
-    @Column(name = "storage_recommendations")
-    private String storageRecommendations;
+    @Column(name = "avg_storage_life")
+    private Double avgStorageLife;
 
 
     public Integer getId() {
@@ -42,19 +36,11 @@ public class FoodItem {
         return category;
     }
 
-    public Integer getRoomTemperatureDays() {
-        return roomTemperatureDays;
+    public Double getBaseTemperature() {
+        return baseTemperature;
     }
 
-    public Integer getRoomTemperatureTemperature() {
-        return roomTemperatureTemperature;
-    }
-
-    public String getRoomTemperatureTips() {
-        return roomTemperatureTips;
-    }
-
-    public String getStorageRecommendations() {
-        return storageRecommendations;
+    public Double getAvgStorageLife() {
+        return avgStorageLife;
     }
 }

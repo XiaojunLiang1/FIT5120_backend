@@ -110,4 +110,37 @@ public class WeatherClientService {
             return result;
         }
     }
+
+    public double[] getAvgDayTempAndHumidity(double lat, double lon) {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+
+            // Step 1: Get 3-day forecast temperature
+            int cnt = 3;
+            String forecastUrl = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt="+cnt+"&appid="+apiKey+"&units=metric";
+            Map forecastResponse = restTemplate.getForObject(forecastUrl, Map.class);
+            List<Map<String, Object>> forecastList = (List<Map<String, Object>>) forecastResponse.get("list");
+
+            double sumTemp = 0.0;
+            for (Map<String, Object> day : forecastList) {
+                Map<String, Object> temp = (Map<String, Object>) day.get("temp");
+                sumTemp += Double.parseDouble(String.valueOf(temp.get("day")));
+            }
+            double avgTemp = Math.round((sumTemp / forecastList.size()) * 10.0) / 10.0;
+
+            // Step 2: Get current humidity
+            String currentUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=metric";
+            Map currentResponse = restTemplate.getForObject(currentUrl, Map.class);
+            Map<String, Object> main = (Map<String, Object>) currentResponse.get("main");
+            double humidity = Double.parseDouble(String.valueOf(main.get("humidity")));
+
+            // Return [avgTemp, humidity]
+            return new double[]{avgTemp, humidity};
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 }
