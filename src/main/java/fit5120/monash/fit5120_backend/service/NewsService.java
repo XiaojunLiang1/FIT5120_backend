@@ -14,6 +14,10 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
+    /**
+     * returns all news from the database
+     * @return
+     */
     public List<News> getAllNews() {
         return newsRepository.findAllByOrderByPublishedAtDesc ();
     }

@@ -17,6 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Handles incoming HTTP requests for food item data.
+ */
 @RestController
 @RequestMapping("/api/foodItems")
 public class FoodItemController {
@@ -26,6 +29,9 @@ public class FoodItemController {
         this.foodItemService = foodItemService;
     }
 
+    /**
+     * returns a list of food items grouped by category.
+     */
     @GetMapping
     public List<FoodCategoryDto> getFoodByCategory() {
         List<FoodItem> allItems = foodItemService.getAllItems();
@@ -42,16 +48,26 @@ public class FoodItemController {
         for (Map.Entry<String, List<String>> entry : categoryMap.entrySet()) {
             result.add(new FoodCategoryDto(entry.getKey(), entry.getValue()));
         }
-
         return result;
     }
 
+    /**
+     * base on food name and temperature, calculate food risk
+     * @param name
+     * @param temperature
+     */
     public ResponseEntity<FoodRiskDto> getFoodQ10Risk( @RequestParam String name, @RequestParam double temperature) {
         FoodRiskDto result = foodItemService.getFoodRisk(name, temperature);
         if (result == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(result);
     }
 
+    /**
+     * base on food name and current location coordinates, calculate food risk
+     * @param name
+     * @param lat
+     * @param lon
+     */
     @GetMapping("/risk")
     public ResponseEntity<FoodRiskDto> getCurrentFoodQ10Risk( @RequestParam String name, @RequestParam double lat, @RequestParam double lon) {
         FoodRiskDto result = foodItemService.getCurrentFoodRisk(name, lat, lon);

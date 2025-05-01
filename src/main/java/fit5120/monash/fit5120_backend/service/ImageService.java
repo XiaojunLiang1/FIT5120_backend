@@ -16,6 +16,11 @@ public class ImageService {
 
     private static final String API_KEY = "9YguYs0AUgwqjIIqynBqmexPVIK3Dcua291n4Bjr9518sK1WetDli7IV";
 
+    /**
+     * this method is used to get image url from pexels api
+     * @param keyword
+     * @return
+     */
     public static String getImageUrlFromPexelsApi(String keyword) {
         try {
             HttpClient client = HttpClient.newHttpClient();

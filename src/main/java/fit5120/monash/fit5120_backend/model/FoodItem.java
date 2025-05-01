@@ -5,6 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * This class represents a row in the food_item table in the database.
+ * It contains the id, name, category, baseTemperature and avgStorageLife of the row.
+ */
 @Entity
 @Table(name = "food_item")
 public class FoodItem {

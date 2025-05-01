@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * service class for handling food item data
+ */
 @Service
 public class FoodItemService {
     private final FoodItemRepository foodItemRepository;
@@ -17,25 +20,32 @@ public class FoodItemService {
         this.weatherClientService = weatherClientService; ;
     }
 
+    /**
+     * returns a list of all food items
+     * @return
+     */
     public List<FoodItem> getAllItems() {
         return foodItemRepository.findAll();
     }
 
+    /**
+     * returns the risk of a food item base on the name and temperature
+     * @param name
+     * @param temperature
+     */
     public FoodRiskDto getFoodRisk(String name, double temperature) {
         try {
             FoodItem item = foodItemRepository.findByName(name);
             if (item == null) return null;
-
             double q10 = 2.0;
             double baseTemp = item.getBaseTemperature();
             double baseLife = item.getAvgStorageLife();
-
             double adjustedLife = baseLife * Math.pow(q10, (baseTemp - temperature) / 10.0);
             adjustedLife = Math.round(adjustedLife * 10.0) / 10.0;
-
             String risk = "";
             String riskDescription = "";
 
+            // risk calculation
             if (adjustedLife < 1) {
                 risk = "Critical";
                 riskDescription = "At the current temperature, the shelf life of this food is less than 24 hours. High temperature creates an ideal environment for rapid bacterial proliferation, including harmful strains such as Salmonella, Listeria, and E. coli. \n" +
@@ -68,7 +78,12 @@ public class FoodItemService {
         }
     }
 
-
+    /**
+     * returns the risk details of a food item base on the name and current location temperature and humidity
+     * @param name
+     * @param lat
+     * @param lon
+     */
     public FoodRiskDto getCurrentFoodRisk(String name, double lat, double lon) {
         try {
             FoodItem item = foodItemRepository.findByName(name);
@@ -82,6 +97,7 @@ public class FoodItemService {
                 temperature = weather[0];
                 humidity = weather[1];
             }
+            // higher humidity, higher q10
             if(humidity > 80) {
                 q10 = 2.0;
             } else if (humidity >60) {

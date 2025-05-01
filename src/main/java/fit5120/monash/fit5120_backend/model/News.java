@@ -3,6 +3,11 @@ package fit5120.monash.fit5120_backend.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * This class represents a row in the news table in the database.
+ * It contains the id, title, imageUrl, newsUrl, publishedAt and description of the row.
+ */
+
 @Entity
 @Table(name = "news")
 public class News {
