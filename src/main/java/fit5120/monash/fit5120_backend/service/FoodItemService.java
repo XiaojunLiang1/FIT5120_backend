@@ -118,6 +118,7 @@ public class FoodItemService {
             if (adjustedLife < 1) {
                 risk = "Critical";
                 riskAssessment = "At the current temperature, the shelf life of this food is less than 24 hours. High temperature creates an ideal environment for rapid bacterial proliferation, including harmful strains such as Salmonella, Listeria, and E. coli.";
+                foodQualityImpact = "Rapid spoilage may cause strong odors, slimy texture, and visible discoloration, making the food unsafe to consume.";
                 healthConsideration = "For elderly individuals with weakened immunity, consuming such food may lead to severe gastrointestinal infections, fever, or even hospitalization.";
                 storageRecommendation = "\u26A0\uFE0F Immediate refrigeration is essential. Discard if the food shows any signs of spoilage (odor, texture change, or discoloration).";
             } else if (adjustedLife <= 3) {
@@ -135,7 +136,7 @@ public class FoodItemService {
             } else {
                 risk = "Low";
                 riskAssessment = "Slightly exceeds the optimal storage condition. Shelf life is a bit shortened, but spoilage risk remains manageable for the next several days.";
-                foodQualityImpact = "However, enzymatic softening and early microbial activity may begin, especially for fresh produce.";
+                foodQualityImpact = "Be careful as enzymatic softening and early microbial activity may begin, especially for fresh produce.";
                 healthConsideration = "Older adults should still be cautious of reduced texture or off-flavor.";
                 storageRecommendation = "\u2705 Keep in a cool, dry place or refrigerate if possible. Consume within a week.";
             }
