@@ -56,11 +56,12 @@ public class FoodItemController {
      * @param name
      * @param temperature
      */
-//    public ResponseEntity<FoodRiskDto> getFoodQ10Risk( @RequestParam String name, @RequestParam double temperature) {
-////        FoodRiskDto result = foodItemService.getFoodRisk(name, temperature);
-//        if (result == null) return ResponseEntity.notFound().build();
-//        return ResponseEntity.ok(result);
-//    }
+    @GetMapping("/temperature")
+    public ResponseEntity<FoodRiskDto> getFoodQ10Risk( @RequestParam String name, @RequestParam double temperature) {
+        FoodRiskDto result = foodItemService.getFoodRisk(name, temperature);
+        if (result == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(result);
+    }
 
     /**
      * base on food name and current location coordinates, calculate food risk
