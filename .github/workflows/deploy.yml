@@ -6,6 +6,7 @@ on:
       - main
       - iteration1
       - iteration2
+      - iteration3
 
 jobs:
   build-and-deploy:
