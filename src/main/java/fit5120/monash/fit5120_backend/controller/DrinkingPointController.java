@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * DrinkingPointController handles incoming HTTP requests related to drinking points.
+ *
+ * This controller provides endpoints for retrieving information about drinking points.
+ * It interacts with the DrinkingPointService to perform operations on drinking point data.
+ */
 @RestController
 @RequestMapping("/api/drinkingpoints")
 public class DrinkingPointController {
