@@ -21,6 +21,12 @@ public class WeatherClientService {
     @Value("${openweather.api.key}")
     private String apiKey;
 
+    private LocationClientService locationClientService;
+
+    public WeatherClientService(LocationClientService locationClientService) {
+        this.locationClientService = locationClientService;
+    }
+
     /**
      * Retrieves the current weather data for a given latitude and longitude.
      *
@@ -42,7 +48,7 @@ public class WeatherClientService {
             Map main = (Map) response.get("main");
             result.put("temp", main.get("temp"));
             result.put("feels_like", main.get("feels_like"));
-            String location = String.valueOf(response.get("name"));
+            String location = locationClientService.getLocationName(Double.parseDouble(lat), Double.parseDouble(lon));
             result.put("location", location);
             return result;
         } catch (Exception e) {

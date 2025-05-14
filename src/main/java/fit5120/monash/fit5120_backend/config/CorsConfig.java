@@ -16,6 +16,7 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("https://heatwiseconnect.pages.dev",
                                 "http://localhost:5173",
+                                "https://iteration2.heatwiseconnect.pages.dev",
                                 "https://iteration1.heatwiseconnect.pages.dev",
                                 "http://127.0.0.1:5173")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")

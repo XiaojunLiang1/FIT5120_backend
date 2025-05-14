@@ -56,4 +56,26 @@ public class LocationClientService {
             return result;
         }
     }
+
+    public String getLocationName(double lat, double lon) {
+        String result = null;
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            String url = "https://api.geoapify.com/v1/geocode/reverse?lat=" + lat +
+                    "&lon=" + lon + "&format=json&apiKey=" + apiKey;
+            Map<String, Object> response = restTemplate.getForObject(url, Map.class);
+            List<Map<String, Object>> features = (List<Map<String, Object>>) response.get("results");
+
+            if (features == null || features.isEmpty()) {
+                result = "No location found";
+                return result;
+            }
+            result = (String) features.get(0).get("suburb");
+            return result;
+        } catch (Exception e) {
+            result = "Failed to retrieve location";
+            return result;
+        }
+    }
+
 }
