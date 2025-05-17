@@ -37,6 +37,7 @@ Personalized Packing List Generator
 - Generates a recommended summer packing list based on: （Age group, Health status, Residential disadvantage level (SEIFA-based))
 
 ## Project Structure
+```
 FIT5120_backend/
 ├── .github/workflows/              # GitHub Actions for CI/CD deployment
 │   └── deploy.yml
@@ -55,6 +56,7 @@ FIT5120_backend/
 ├── mvnw / mvnw.cmd                 # Maven wrapper executables
 ├── .gitignore / .gitattributes     # Git config files
 └── README.md                       # Project documentation
+```
 
 
 ### Prerequisites
