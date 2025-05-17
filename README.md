@@ -37,7 +37,25 @@ Personalized Packing List Generator
 - Generates a recommended summer packing list based on: （Age group, Health status, Residential disadvantage level (SEIFA-based))
 
 ## Project Structure
-<pre> FIT5120_backend/ ├── .github/workflows/ # GitHub Actions for CI/CD deployment │ └── deploy.yml ├── .mvn/wrapper/ # Maven wrapper scripts ├── src/ │ └── main/ │ └── java/ │ └── com/fit5120/backend/ │ ├── controller/ # REST API controllers │ ├── service/ # Business logic │ ├── model/ # DTOs and domain objects │ └── repository/ # Data handling (if used) │ │ └── resources/ │ ├── application.properties # Spring Boot config │ └── static/ or templates/ # (if frontend or docs included) ├── pom.xml # Project dependencies and build config ├── mvnw / mvnw.cmd # Maven wrapper executables ├── .gitignore / .gitattributes # Git-related configs └── README.md # Project documentation </pre>
+FIT5120_backend/
+├── .github/workflows/              # GitHub Actions for CI/CD deployment
+│   └── deploy.yml
+├── .mvn/wrapper/                   # Maven wrapper scripts
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/fit5120/backend/
+│       │       ├── controller/     # REST API controllers
+│       │       ├── service/        # Business logic
+│       │       ├── model/          # DTOs and domain objects
+│       │       └── repository/     # (Optional) database logic or data access
+│       └── resources/
+│           └── application.properties  # Spring Boot config
+├── pom.xml                         # Maven project definition
+├── mvnw / mvnw.cmd                 # Maven wrapper executables
+├── .gitignore / .gitattributes     # Git config files
+└── README.md                       # Project documentation
+
 
 ### Prerequisites
 
