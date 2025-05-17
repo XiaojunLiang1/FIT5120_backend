@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+/**
+ * PackingController handles incoming HTTP requests related to packing list generation.
+ *
+ * This controller provides an endpoint for generating a packing list based on a given
+ * QuizRequest. It interacts with the SeifaAreaRiskRepository to determine the risk level
+ * associated with a specific postcode.
+ **/
 
 @RestController
 @RequestMapping("/api/packing")
@@ -21,6 +28,17 @@ public class PackingController {
         this.seifaAreaRiskRepository = seifaAreaRiskRepository;
     }
 
+    /**
+     * Generates a packing list based on the provided QuizRequest.
+     *
+     * This method retrieves the risk level associated with the given postcode
+     * from the SeifaAreaRiskRepository and constructs a packing list accordingly.
+     * It returns an HTTP response entity containing the packing list or an error message
+     * if the postcode is not found in the risk database.
+     *
+     * @param request The QuizRequest object containing user inputs, including the postcode.
+     * @return A ResponseEntity containing either the packing list or an error message.
+     */
     @PostMapping
     public ResponseEntity<Map<String, Object>> generatePackingList(@RequestBody QuizRequest request) {
         int postcode = Integer.parseInt(request.getPostcode());
@@ -50,7 +68,6 @@ public class PackingController {
                 items.add(Map.of("name", "Portable hand fan", "description", "Rechargeable fan to stay cool outdoors."));
                 items.add(Map.of("name", "Breathable face cloth", "description", "Moisten and place on forehead or neck."));
                 items.add(Map.of("name", "Loose cotton scarf", "description", "Can shield neck or wet and wrap for cooling."));
-
             }
             case 2 -> {
                 items.add(Map.of("name", "Cooling towel", "description", "Helps reduce body heat in extreme conditions."));

@@ -5,6 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * This class represents a row in the seifa_decile_classified table in the database.
+ * It contains the postcode and areaRiskLevel of the row.
+ */
+
 @Entity
 @Table(name = "seifa_decile_classified")
 public class SeifaAreaRisk {

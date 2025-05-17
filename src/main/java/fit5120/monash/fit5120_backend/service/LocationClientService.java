@@ -57,6 +57,14 @@ public class LocationClientService {
         }
     }
 
+
+    /**
+     * Retrieves the location name for a given latitude and longitude.
+     *
+     * @param lat The latitude of the location.
+     * @param lon The longitude of the location.
+     * @return The location name or a message/error if data retrieval fails.
+     */
     public String getLocationName(double lat, double lon) {
         String result = null;
         try {
@@ -77,5 +85,4 @@ public class LocationClientService {
             return result;
         }
     }
-
 }
