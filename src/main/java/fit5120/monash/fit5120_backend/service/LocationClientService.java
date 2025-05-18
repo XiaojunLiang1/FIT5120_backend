@@ -72,13 +72,13 @@ public class LocationClientService {
             String url = "https://api.geoapify.com/v1/geocode/reverse?lat=" + lat +
                     "&lon=" + lon + "&format=json&apiKey=" + apiKey;
             Map<String, Object> response = restTemplate.getForObject(url, Map.class);
-            List<Map<String, Object>> features = (List<Map<String, Object>>) response.get("address_line2");
+            List<Map<String, Object>> features = (List<Map<String, Object>>) response.get("results");
 
             if (features == null || features.isEmpty()) {
                 result = "No location found";
                 return result;
             }
-            result = (String) features.get(0).get("formatted");
+            result = (String) features.get(0).get("suburb") + ", " + (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
             return result;
         } catch (Exception e) {
             result = "Failed to retrieve location";
