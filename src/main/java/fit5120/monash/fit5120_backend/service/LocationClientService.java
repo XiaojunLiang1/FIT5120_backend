@@ -78,7 +78,12 @@ public class LocationClientService {
                 result = "No location found";
                 return result;
             }
-            result = (String) features.get(0).get("suburb") + ", " + (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
+            if ((String) features.get(0).get("suburb") == null)
+            {
+                result = (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
+            } else {
+                result = (String) features.get(0).get("suburb") + ", " + (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
+            }
             return result;
         } catch (Exception e) {
             result = "Failed to retrieve location";
