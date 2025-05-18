@@ -78,7 +78,7 @@ public class LocationClientService {
                 result = "No location found";
                 return result;
             }
-            result = (String) features.get(0).get("suburb");
+            result = (String) features.get(0).get("formatted");
             return result;
         } catch (Exception e) {
             result = "Failed to retrieve location";
