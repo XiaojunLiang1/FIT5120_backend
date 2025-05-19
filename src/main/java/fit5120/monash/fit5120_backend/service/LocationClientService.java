@@ -57,6 +57,14 @@ public class LocationClientService {
         }
     }
 
+
+    /**
+     * Retrieves the location name for a given latitude and longitude.
+     *
+     * @param lat The latitude of the location.
+     * @param lon The longitude of the location.
+     * @return The location name or a message/error if data retrieval fails.
+     */
     public String getLocationName(double lat, double lon) {
         String result = null;
         try {
@@ -70,12 +78,16 @@ public class LocationClientService {
                 result = "No location found";
                 return result;
             }
-            result = (String) features.get(0).get("suburb");
+            if ((String) features.get(0).get("suburb") == null)
+            {
+                result = (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
+            } else {
+                result = (String) features.get(0).get("suburb") + ", " + (String) features.get(0).get("city") + ", " + (String) features.get(0).get("state");
+            }
             return result;
         } catch (Exception e) {
             result = "Failed to retrieve location";
             return result;
         }
     }
-
 }

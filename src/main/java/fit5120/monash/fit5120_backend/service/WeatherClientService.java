@@ -118,11 +118,15 @@ public class WeatherClientService {
     }
 
     /**
-     * retrieves the average day temperature and humidity for a given latitude and longitude
-     * @param lat
-     * @param lon
-     * @return
+     * Retrieves the average day temperature and current humidity for a given latitude and longitude.
+     *
+     * @param lat The latitude of the location.
+     * @param lon The longitude of the location.
+     * @return An array with the average temperature of the next three days and the current humidity.
+     *         The first element in the array is the average temperature, and the second element
+     *         is the current humidity. Returns an error message if data retrieval fails.
      */
+
     public double[] getAvgDayTempAndHumidity(double lat, double lon) {
         try {
             RestTemplate restTemplate = new RestTemplate();

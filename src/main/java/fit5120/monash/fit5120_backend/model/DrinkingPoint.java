@@ -4,6 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * This class represents a row in the drinking_fountains table in the database.
+ * It contains the id, description, latitude, longitude, photoUrl, name, address, postcode, suburb, state, category and status of the row.
+ */
+
 @Entity
 @Table(name = "drinking_fountains")
 public class DrinkingPoint {
